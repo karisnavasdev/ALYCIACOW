@@ -518,6 +518,31 @@ h1, h2, h3, p { overflow-wrap: anywhere; margin: 0; }
   letter-spacing: 0.04em;
 }
 
+/* Tweet embed */
+.tweet-section {
+  text-align: center;
+  max-width: 680px;
+}
+.tweet-lead {
+  margin: -12px auto 28px;
+  max-width: 420px;
+  color: var(--muted);
+  font-weight: 700;
+  line-height: 1.65;
+}
+.tweet-embed {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  border: 4px solid var(--cow-black);
+  border-radius: 20px;
+  background: var(--card);
+  box-shadow: 8px 8px 0 rgba(26, 26, 26, 0.16);
+}
+.tweet-embed .twitter-tweet {
+  margin: 0 !important;
+}
+
 /* Features */
 .features-section { max-width: 1200px; }
 .features-grid {
