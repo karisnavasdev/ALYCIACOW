@@ -143,6 +143,35 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight") navigateLightbox(1);
 });
 
+const milkBubbles = document.querySelector(".milk-bubbles");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function spawnMilkBubble() {
+  if (!milkBubbles) return;
+  const bubble = document.createElement("span");
+  bubble.className = "milk-bubble";
+  const size = 10 + Math.random() * 24;
+  const left = Math.random() * 100;
+  const duration = 9 + Math.random() * 14;
+  const drift = (Math.random() - 0.5) * 90;
+  const opacity = 0.28 + Math.random() * 0.42;
+  bubble.style.left = `${left}%`;
+  bubble.style.width = `${size}px`;
+  bubble.style.height = `${size}px`;
+  bubble.style.setProperty("--drift", `${drift}px`);
+  bubble.style.setProperty("--bubble-opacity", String(opacity));
+  bubble.style.animationDuration = `${duration}s`;
+  milkBubbles.appendChild(bubble);
+  window.setTimeout(() => bubble.remove(), duration * 1000 + 200);
+}
+
+if (milkBubbles && !prefersReducedMotion) {
+  for (let i = 0; i < 14; i += 1) {
+    window.setTimeout(spawnMilkBubble, i * 320);
+  }
+  window.setInterval(spawnMilkBubble, 850);
+}
+
 document.querySelectorAll("img").forEach((image, index) => {
   image.addEventListener("error", () => {
     image.removeAttribute("src");
